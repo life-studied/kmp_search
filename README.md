@@ -3,12 +3,27 @@
 
 ## 接口说明
 
-* search(const char* txt)：查找第一个找到的字符串
-* search(const char* txt, int startIndex)：查找从startIndex开始的第一个字符串
-* searchAll(const char* txt)：查找所有找到的字符串
+* search(const char* txt)：查找第一个找到的字符串，返回找到的下标
+* search(const char* txt, int startIndex)：查找从startIndex开始的第一个字符串，返回找到的下标
+* searchAll(const char* txt)：查找所有找到的字符串，返回特征字符串的下标数组
 
 ## 使用案例
 
 ```C++
+#include "kmp_search.h"
+#include <iostream>
+using std::cout;
+using std::endl;
+int main()
+{
+	const char* p = "aaab";
+	const char* txt = "aaabaaabaaab";
+	kmp_search s(p);
+	cout << s.search(txt) << endl;
+	cout << s.search(txt, 4) << endl;
+	vector<int> v = s.searchAll(txt);
+	for (const auto& i : v)
+		cout << i << endl;
+}
 ```
 
